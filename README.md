@@ -63,27 +63,26 @@ required for those endpoints.
 We're interested in the `StrParameterisedPiggyBankContract`.
 
 ## Run the PAB executable
-### Rule of this piggy bank 
-The piggy bank has a restriction that you cannot withdraw unless it has accumulated at least 1 million lovelace.
+### Parametrised piggy banks
+These piggy banks are parametrised by the name of the beneficiary. In practice the public key hash of the beneficiary wallet will be used for parametrisation. Here in order to avoid complexity of passing in pkh in the REST api requests and convering it to a PublicKeyHash, a simple string is used. This still demostrates the use of parametrisation.
 
-### Put, empty and inspect
+### Put, empty, inspect and logPkh
 
-After starting the PAB, you may want to run `./run.sh` to send some requests to the server.
+After starting the PAB, you can run `./run.sh` to send requests to the server and observe the results.
 
-First, we activate four distinct wallets.
+First, we activate four distinct wallets. Dad, Mom, Jack and Jill. 
+Each script address to which lovelace can be sent is a piggy bank.
 
 Then in order this following requests and responses can be observed
 
-- Wallet 1 puts 199999 lovelace
-- Wallet 2 puts 299999 lovelace
-- Wallet 3 tries to empty but not allowed since total < 1 M lovelace
-- Wallet 2 puts 1000000 lovelace.
-- Wallet 4 inspect the wallet with 'inspect' endpoint. It finds 1499998 lovelace in total
-- Wallet 4 tries to empty and is successful
+- Using the `logPkh` endpoint the pkh of Jack's and Jill's wallet are printed.
+- Dad adds 2000000 lovelace to Jack's piggy bank using `put` endpoint.
+- Mom then puts 3000000 lovelave to Jill's piggy bank.
+- Dad uses `inspect` endpoint and sees that Jack's piggy bank now has the lovelace he put.
+- Jack empties his piggy bank using the `empty` endpoint.
+- `inspect` Jack's piggy bank and can be seen to be empty
+- Finally Jill empties her piggy bank using the `empty` endpoint.
 
 
 Note that:
-Wallet 3's failed attempt actually didn't cost it anything.
-
-A strong selling point for Cardano is that we can check quite a bit of information before data ever hits the chain.
-Anyone who spent hundreds of USD on a few occassions on a failed ETH transaction will appreciate this.
+It was possible to create two different script addresses for Jack and Jill to be used as piggy bank.
