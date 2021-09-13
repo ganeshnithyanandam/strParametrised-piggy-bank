@@ -63,7 +63,7 @@ We're interested in the `StrParameterisedPiggyBankContract`.
 
 ## Run the PAB executable
 ### Parametrised piggy banks
-These piggy banks are parametrised by the name of the beneficiary. In practice the public key hash of the beneficiary wallet will be used for parametrisation. Here in order to avoid complexity of passing in pkh in the REST api requests and convering it to a PublicKeyHash, a simple string is used. This still demostrates the use of parametrisation.
+These piggy banks are parametrised by the name of the beneficiary. In practice the public key hash of the beneficiary wallet will be used for parametrisation. Here in order to avoid complexity of passing in pkh in the REST api requests and convering it to a PublicKeyHash, a simple string is used. This still demonstrates the use of parametrisation.
 
 ### Put, empty, inspect and logPkh
 
