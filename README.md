@@ -1,5 +1,4 @@
-# TODO Update readme
-# Parametrised Piggy Bank
+# String parametrised Piggy Bank
 
 This repo houses a simple Plutus Contract that acts as a parametrised shared piggy bank.
 
