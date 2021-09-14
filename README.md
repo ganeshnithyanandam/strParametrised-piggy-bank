@@ -79,8 +79,8 @@ Then in order this following requests and responses can be observed
 - Mom then puts 3000000 lovelave to Jill's piggy bank.
 - Dad uses `inspect` endpoint and sees that Jack's piggy bank now has the lovelace he put.
 - Jack empties his piggy bank using the `empty` endpoint.
-- `inspect` Jack's piggy bank and can be seen to be empty
-- Finally Jill empties her piggy bank using the `empty` endpoint.
+- With `inspect`, it can be seen that Jack's piggy bank has been emptied
+- Finally, Jill empties her piggy bank using the `empty` endpoint.
 
 
 Note that:
