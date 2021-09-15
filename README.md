@@ -65,6 +65,8 @@ We're interested in the `StrParameterisedPiggyBankContract`.
 ### Parametrised piggy banks
 These piggy banks are parametrised by the name of the beneficiary. In practice the public key hash of the beneficiary wallet will be used for parametrisation. Here in order to avoid complexity of passing in pkh in the REST api requests and convering it to a PublicKeyHash, a simple string is used. This still demonstrates the use of parametrisation.
 
+Additionally, the piggy bank allows emptying only when lovelace > 1M is accumulated.
+
 ### Put, empty, inspect and logPkh
 
 After starting the PAB, you can run `./run.sh` to send requests to the server and observe the results.
@@ -75,10 +77,12 @@ Each script address to which lovelace can be sent is a piggy bank.
 Then in order this following requests and responses can be observed
 
 - Using the `logPkh` endpoint the pkh of Jack's and Jill's wallet are printed.
-- Dad adds 2000000 lovelace to Jack's piggy bank using `put` endpoint.
-- Mom then puts 3000000 lovelave to Jill's piggy bank.
+- Dad adds 20000 lovelace to Jack's piggy bank using `put` endpoint.
+- Mom then puts 3000000 lovelace to Jill's piggy bank.
 - Dad uses `inspect` endpoint and sees that Jack's piggy bank now has the lovelace he put.
-- Jack empties his piggy bank using the `empty` endpoint.
+- Jack tries to empty his piggy bank using the `empty` endpoint. However since his piggy bank has < 1M lovelace withdrawal is not allowed.
+- Dad puts 1000000 lovelace to Jack's piggy bank.
+- Jack empties his piggy bank using the `empty` endpoint successfully.
 - With `inspect`, it can be seen that Jack's piggy bank has been emptied while Jill still has 3M lovelace in hers.
 - Finally, Jill empties her piggy bank using the `empty` endpoint.
 

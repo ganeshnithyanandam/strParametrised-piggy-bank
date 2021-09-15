@@ -6,16 +6,16 @@ export Jill=$(curl -s -H "Content-Type: application/json" -X POST -d '{"caID": "
 
 sleep 4
 curl -H "Content-Type: application/json" -X POST \
--d '{"pbaBeneficiaryName":"Jack", "pbaAmount":2000000}' \
+-d '{"pbaBeneficiaryName":"Jack", "pbaAmount":0}' \
 http://localhost:9080/api/contract/instance/$Jack/endpoint/logPkh && sleep 1
 
 curl -H "Content-Type: application/json" -X POST \
--d '{"pbaBeneficiaryName":"Jack", "pbaAmount":2000000}' \
+-d '{"pbaBeneficiaryName":"Jack", "pbaAmount":0}' \
 http://localhost:9080/api/contract/instance/$Jill/endpoint/logPkh && sleep 4
 
 #Put
 curl -H "Content-Type: application/json" -X POST \
--d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":2000000}' \
+-d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":20000}' \
 http://localhost:9080/api/contract/instance/$Dad/endpoint/put && sleep 4
 
 curl -H "Content-Type: application/json" -X POST \
@@ -23,11 +23,19 @@ curl -H "Content-Type: application/json" -X POST \
 http://localhost:9080/api/contract/instance/$Mom/endpoint/put && sleep 4
 
 curl -H "Content-Type: application/json" -X POST \
--d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":2000000}' \
+-d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":0}' \
 http://localhost:9080/api/contract/instance/$Dad/endpoint/inspect && sleep 4
 
 curl -H "Content-Type: application/json" -X POST \
--d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":2000000}' \
+-d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":0}' \
+http://localhost:9080/api/contract/instance/$Jack/endpoint/empty && sleep 4
+
+curl -H "Content-Type: application/json" -X POST \
+-d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":100000}' \
+http://localhost:9080/api/contract/instance/$Dad/endpoint/put && sleep 4
+
+curl -H "Content-Type: application/json" -X POST \
+-d '{ "pbaBeneficiaryName":"Jack", "pbaAmount":0}' \
 http://localhost:9080/api/contract/instance/$Jack/endpoint/empty && sleep 4
 
 curl -H "Content-Type: application/json" -X POST \
