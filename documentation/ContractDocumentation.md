@@ -1,9 +1,9 @@
 
 ### Introduction
-This smart contract demonstrates use of paramterisation in Plutus contracts. There are piggy banks are parametrised by the name of the beneficiary. The use case is built upon two kids Jack and Jill who have their own piggy banks. Dad and Mom can put money to either of their piggy banks. Jack and Jill can withdraw. Here we use the names as the parameters whereas in practice it will be the public key hash. Additionally, the piggy bank allows emptying only when lovelace > 1M is accumulated.
+This smart contract demonstrates use of parametrization in Plutus contracts. There are piggy banks are parametrized by the name of the beneficiary. The use case is built upon two kids Jack and Jill who have their own piggy banks. Dad and Mom can put money in either of their piggy banks. Jack and Jill can withdraw. Here we use the names as the parameters whereas in practice it will be the public key hash. Additionally, the piggy bank allows emptying only when lovelace > 1M is accumulated.
 
 ### On chain code
-Here we intend to have different script addresses for Jack and Jill, so that they have their own piggy banks. To achieve that, we use the concept of parametrised validator. 
+Here we intend to have different script addresses for Jack and Jill, so that they have their own piggy banks. To achieve that, we use the concept of parametrized validator. 
 
 ```haskell
 
@@ -121,7 +121,7 @@ After calling ``submitTxConstraints`` in the next line, the Plutus app runtime e
 #### 2. empty endpoint
 This endpoint is used to empty the amount at the script address and receive it into the wallet. The piggy bank to eb emptied is determined by using the `InParam`. Here in `InParam` we have used the beneficiary name as the identifier. In practice the public key hash of the beneficiary wallet will be used.    
 
-The constraints used here are `Constraints.unspentOutputs` to identify the utxos collected from the script address and `Constraints.otherScript` to identify the script itself through the parametrised validator.
+The constraints used here are `Constraints.unspentOutputs` to identify the utxos collected from the script address and `Constraints.otherScript` to identify the script itself through the parametrized validator.
 
 ```haskell
 empty :: forall w s e. AsContractError e => PBArg -> Contract w s e ()
